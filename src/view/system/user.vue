@@ -436,12 +436,12 @@
                   this.formData.personAwards = res.data.data.personAwards
                   this.formData.educationId = res.data.data.educationId
                   this.formData.memo = res.data.data.memo
+                  this.addOrUpdateVisible = true
                 })
               }
             })
           })
         })
-        this.addOrUpdateVisible = true
       },
       cancel (name) {
         this.$refs[name].resetFields();

@@ -17,7 +17,7 @@
             key: 'categoryId'
           },
           {
-            title: '新闻类别名称',
+            title: '资讯类别名称',
             key: 'categoryName'
           },
           {
@@ -106,15 +106,15 @@
               h('h2', {
                 props: {
                 }
-              },'新闻类别信息'),
+              },'资讯类别信息'),
               h('p', {
                 props: {}
-              },'新闻分类名称:'),
+              },'资讯分类名称:'),
               h('Input', {
                 props: {
                   value: this.category.categoryName,
                   autofocus: true,
-                  placeholder: '请输入新闻分类名称'
+                  placeholder: '请输入资讯分类名称'
                 },
                 on: {
                   input: (val) => {
