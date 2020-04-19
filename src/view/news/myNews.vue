@@ -2,29 +2,29 @@
   <div>
     <Table stripe border :loading="loading" :height="500" :columns="columns" :data="dataList"></Table>
     <Drawer
-      title="修改新闻"
+      title="修改资讯"
       v-model="newsUpdate"
       width="800"
       :mask-closable="false"
       :styles="styles"
     >
       <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
-        <FormItem label="新闻类别" prop="category">
+        <FormItem label="资讯类别" prop="category">
           <Select v-model="category" style="width:250px">
             <Option v-for="item in categoryList" :value="item.categoryId" :key="item.categoryId">{{item.categoryName}}
             </Option>
           </Select>
         </FormItem>
-        <FormItem label="新闻标题" prop="newsTitle" style="width:600px">
-          <Input v-model="formValidate.newsTitle" placeholder="请输入新闻标题"></Input>
+        <FormItem label="资讯标题" prop="newsTitle" style="width:600px">
+          <Input v-model="formValidate.newsTitle" placeholder="请输入资讯标题"></Input>
         </FormItem>
-        <FormItem label="新闻作者" prop="author" style="width:600px">
+        <FormItem label="资讯作者" prop="author" style="width:600px">
           <Input v-model="formValidate.author" placeholder="请输入文章作者"></Input>
         </FormItem>
-        <FormItem label="新闻图片" prop="cover" v-if="category===1" style="width:600px">
-          <Input v-model="formValidate.cover" placeholder="请输入新闻图片"></Input>
+        <FormItem label="资讯图片" prop="cover" v-if="category===1" style="width:600px">
+          <Input v-model="formValidate.cover" placeholder="请输入资讯图片"></Input>
         </FormItem>
-        <FormItem label="新闻内容" prop="newsContent">
+        <FormItem label="资讯内容" prop="newsContent">
           <editor ref="editor" :value="formValidate.newsContent" @on-change="handleChange"/>
         </FormItem>
       </Form>
@@ -54,7 +54,7 @@
             width: 50
           },
           {
-            title: '新闻标题',
+            title: '资讯标题',
             key: 'newsTitle'
           },
           {
@@ -62,7 +62,7 @@
             key: 'formatTime'
           },
           {
-            title: '新闻类别',
+            title: '资讯类别',
             key: 'categoryName'
           },
           {
@@ -176,13 +176,13 @@
         },
         ruleValidate: {
           newsTitle: [
-            {required: true, message: '新闻标题不能为空', trigger: 'blur'}
+            {required: true, message: '资讯标题不能为空', trigger: 'blur'}
           ],
           author: [
-            {required: true, message: '新闻作者不能为空', trigger: 'blur'}
+            {required: true, message: '资讯作者不能为空', trigger: 'blur'}
           ],
           newsContent: [
-            {required: true, message: '新闻正文不能为空', trigger: 'blur'}
+            {required: true, message: '资讯正文不能为空', trigger: 'blur'}
           ]
         }
       }
@@ -235,7 +235,7 @@
         this.$refs[name].validate((valid) => {
           if (valid) {
             if (this.category===0) {
-              this.$Message.error('请选择新闻类别!')
+              this.$Message.error('请选择资讯类别!')
             } else {
               axios.request({
                 url: `news/edit/details/${this.category}`,

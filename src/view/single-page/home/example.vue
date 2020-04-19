@@ -49,7 +49,7 @@ export default {
       ],
       series: [
         {
-          name: '高校科协',
+          name: '可回收垃圾',
           type: 'line',
           stack: '总量',
           areaStyle: {normal: {
@@ -58,7 +58,7 @@ export default {
           data: [120, 132, 101, 134, 90, 230, 210]
         },
         {
-          name: '企业科协',
+          name: '有害垃圾',
           type: 'line',
           stack: '总量',
           areaStyle: {normal: {
@@ -67,7 +67,7 @@ export default {
           data: [257, 358, 278, 234, 290, 330, 310]
         },
         {
-          name: '社区科协',
+          name: '湿垃圾',
           type: 'line',
           stack: '总量',
           areaStyle: {normal: {
@@ -76,7 +76,7 @@ export default {
           data: [379, 268, 354, 269, 310, 478, 358]
         },
         {
-          name: '乡镇科协',
+          name: '干垃圾',
           type: 'line',
           stack: '总量',
           areaStyle: {normal: {
@@ -85,7 +85,7 @@ export default {
           data: [320, 332, 301, 334, 390, 330, 320]
         },
         {
-          name: '农技协',
+          name: '大件垃圾',
           type: 'line',
           stack: '总量',
           label: {

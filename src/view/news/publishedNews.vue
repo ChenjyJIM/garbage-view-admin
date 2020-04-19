@@ -3,17 +3,17 @@
     <Form :model="dataForm">
       <Row>
         <Col span="6">
-          <FormItem label="新闻标题" prop="title">
-            <Input v-model="dataForm.title" style="width:200px" placeholder="新闻标题" clearable/>
+          <FormItem label="资讯标题" prop="title">
+            <Input v-model="dataForm.title" style="width:200px" placeholder="资讯标题" clearable/>
           </FormItem>
         </Col>
         <Col span="6">
-          <FormItem label="不包含停用新闻" prop="withoutStop">
+          <FormItem label="不包含停用资讯" prop="withoutStop">
             <i-switch v-model="dataForm.withoutStop"/>
           </FormItem>
         </Col>
         <Col span="6">
-          <FormItem label="新闻类别" prop="category">
+          <FormItem label="资讯类别" prop="category">
             <Select v-model="dataForm.category" style="width:200px">
               <Option v-for="item in categoryList" :value="item.categoryId" :key="item.categoryId">{{item.categoryName}}
               </Option>
@@ -71,7 +71,7 @@
             width: 50
           },
           {
-            title: '新闻标题',
+            title: '资讯标题',
             key: 'newsTitle'
           },
           {
@@ -81,7 +81,7 @@
             width: 150
           },
           {
-            title: '新闻分类',
+            title: '资讯分类',
             key: 'categoryName',
             align: 'center',
             width: 150
@@ -115,9 +115,9 @@
             render: (h, params) => {
               function f () {
                 if (!params.row.stop) {
-                  return '停用新闻'
+                  return '停用资讯'
                 } else {
-                  return '恢复新闻'
+                  return '恢复资讯'
                 }
               }
 

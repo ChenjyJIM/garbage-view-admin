@@ -1,6 +1,6 @@
 <template>
   <Form ref="formdata" :model="formdata" :rules="ruleValidate" :label-width="80">
-    <h1>填写注册信息</h1>
+    <h1 align="center">填写注册信息</h1>
     <FormItem label="姓名：" prop="name">
       <Input v-model="formdata.name" placeholder="填入您的姓名"></Input>
     </FormItem>

@@ -23,10 +23,10 @@
         <Input v-model="formdata.mail" v-if="show === true"></Input>
 
       </FormItem>
-      <FormItem label="您加入的学会：" prop="instId">
-        <Input v-model="formdata.instId"disabled=""></Input>
+      <!--<FormItem label="您加入的学会：" prop="instId">-->
+        <!--<Input v-model="formdata.instId"disabled=""></Input>-->
 
-      </FormItem>
+      <!--</FormItem>-->
       <FormItem label="您的电话：" prop="phone">
         <Input v-model="formdata.phone" v-if="show === false" disabled=""></Input>
         <Input v-model="formdata.phone" v-if="show === true"></Input>
@@ -62,11 +62,11 @@
         <Input v-model="formdata.ethnic" v-if="show === true"></Input>
 
       </FormItem>
-      <FormItem label="您的党派：" prop="partisan">
-        <Input v-model="formdata.partisan" v-if="show === false" disabled=""></Input>
-        <Input v-model="formdata.partisan" v-if="show === true"></Input>
+      <!--<FormItem label="您的党派：" prop="partisan">-->
+        <!--<Input v-model="formdata.partisan" v-if="show === false" disabled=""></Input>-->
+        <!--<Input v-model="formdata.partisan" v-if="show === true"></Input>-->
 
-      </FormItem>
+      <!--</FormItem>-->
       <FormItem label="您的qq：" prop="qq">
         <Input v-model="formdata.qq" v-if="show === false" disabled=""></Input>
         <Input v-model="formdata.qq" v-if="show === true"></Input>
@@ -95,19 +95,6 @@ export default {
     return {
       model1: '',
       docCatagory: '未选择',
-      catagoryList: [{
-        value: '通知',
-        label: '通知'
-      },
-      {
-        value: '策划方案',
-        label: '策划方案'
-      },
-      {
-        value: '报告',
-        label: '报告'
-      }
-      ],
       taskExecId: '1',
       show: false,
       ruleValidate: {

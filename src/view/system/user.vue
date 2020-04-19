@@ -58,13 +58,6 @@
                 </RadioGroup>
               </FormItem>
             </Col>
-              <Col span="8">
-                <FormItem label="学会：" prop="instId">
-                  <Select v-model="formData.instId" placeholder="填入您加入的学会">
-                    <Option v-for="item in instList" :value="item.instId" :key="item.instId">{{item.instName}}</Option>
-                  </Select>
-                </FormItem>
-              </Col>
           </Row>
             <Row>
               <Col span="12">
@@ -72,25 +65,6 @@
                   <FormItem prop="formatBirthday">
                     <DatePicker type="date" confirm format="yyyy年M月d日" value="yyyy-MM-dd" placeholder="选择您的生日" v-model="formData.formatBirthday"></DatePicker>
                   </FormItem>
-                </FormItem>
-              </Col>
-              <Col span="12">
-                <FormItem label="民族：">
-                  <Input v-model="formData.ethnic" placeholder="填入您的民族（可选）"></Input>
-                </FormItem>
-              </Col>
-            </Row>
-            <Row>
-              <Col span="12">
-                <FormItem label="党派：">
-                  <Input v-model="formData.partisan" placeholder="填入您的党派（可选）"></Input>
-                </FormItem>
-              </Col>
-              <Col span="12">
-                <FormItem label="学历：" prop="educationId">
-                  <Select v-model="formData.educationId" placeholder="请选择学历">
-                    <Option v-for="item in educationList" :value="item.eduId" :key="item.eduId">{{item.eduName}}</Option>
-                  </Select>
                 </FormItem>
               </Col>
             </Row>
@@ -130,12 +104,6 @@
                 </FormItem>
               </Col>
             </Row>
-            <FormItem label="社会任职情况：">
-              <Input v-model="formData.personPublicDuty" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="社会任职情况（可选）"></Input>
-            </FormItem>
-            <FormItem label="获奖情况：">
-              <Input v-model="formData.personAwards" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="获奖情况（可选）"></Input>
-            </FormItem>
             <FormItem label="备注" prop="memo">
               <Input v-model="formData.memo" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="随便说点什么呗"></Input>
             </FormItem>
@@ -200,27 +168,9 @@
             key: 'loginName'
           },
           {
-            title: '类型',
-            key: 'type',
+            title: '角色',
+            key: 'roleName',
             align: 'center',
-            render: (h, params) => {
-              function f () {
-                if (params.row.type===1){
-                  return '学术团体会员'
-                } else if (params.row.type===2){
-                  return '非学术团体会员'
-                } else if (params.row.type===0){
-                  return '未知类型'
-                }
-              }
-              return h('div', [
-                h('Tag', {
-                  props: {
-
-                  }
-                },f())
-              ])
-            }
           },
           {
             title: '状态',
@@ -439,6 +389,7 @@
                   this.addOrUpdateVisible = true
                 })
               }
+              this.addOrUpdateVisible = true
             })
           })
         })

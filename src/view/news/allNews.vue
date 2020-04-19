@@ -3,12 +3,12 @@
     <Form :model="dataForm">
       <Row>
         <Col span="6">
-          <FormItem label="新闻标题" prop="title">
-            <Input v-model="dataForm.title" style="width:200px" placeholder="新闻标题" clearable />
+          <FormItem label="资讯标题" prop="title">
+            <Input v-model="dataForm.title" style="width:200px" placeholder="资讯标题" clearable />
           </FormItem>
         </Col>
         <Col span="6">
-          <FormItem label="新闻类别" prop="category">
+          <FormItem label="资讯类别" prop="category">
             <Select v-model="dataForm.category" style="width:200px">
               <Option v-for="item in categoryList" :value="item.categoryId" :key="item.categoryId">{{item.categoryName}}
               </Option>
@@ -16,7 +16,7 @@
           </FormItem>
         </Col>
         <Col span="6">
-          <FormItem label="新闻状态" prop="status">
+          <FormItem label="资讯状态" prop="status">
             <Select v-model="dataForm.status" style="width:200px">
               <Option v-for="item in statusList" :value="item.value" :key="item.value">{{ item.label }}</Option>
             </Select>
@@ -94,7 +94,7 @@
             width: 50
           },
           {
-            title: '新闻标题',
+            title: '资讯标题',
             key: 'newsTitle'
           },
           {
@@ -104,7 +104,7 @@
             width: 150
           },
           {
-            title: '新闻分类',
+            title: '资讯分类',
             key: 'categoryName',
             align: 'center',
             width: 150

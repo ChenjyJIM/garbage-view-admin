@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Button @click="industryInfo(false)" type="success">新增</Button>
+    <Button @click="addGarbageType(false)" type="success">新增</Button>
     <Table stripe border :loading="loading" :height="500" :columns="columns" :data="dataList"></Table>
   </div>
 </template>
@@ -14,17 +14,19 @@
         columns: [
           {
             title: 'ID',
-            key: 'industryId',
+            key: 'id',
             align: 'center',
             width: 50
           },
           {
-            title: '学会分类名称',
-            key: 'indusName'
+            title: '垃圾种类名称',
+            align: 'center',
+            key: 'garbageName'
           },
           {
-            title: '学会分类简称',
-            key: 'indusShort'
+            title: '垃圾种类描述',
+            align: 'center',
+            key: 'garbageDetail'
           },
           {
             title: '操作',
@@ -43,7 +45,7 @@
                   },
                   on: {
                     click: () => {
-                      this.updateIndustry(params.index)
+                      this.updateGarbageType(params.index)
                     }
                   }
                 }, '修改'),
@@ -54,7 +56,7 @@
                   },
                   on: {
                     click: () => {
-                      this.removeIndustry(params.index)
+                      this.removeGarbageType(params.index)
                     }
                   }
                 }, '删除')
@@ -64,10 +66,10 @@
         ],
         dataList: [],
         loading: false,
-        industry: {
-          indusName: '',
-          indusShort: '',
-          industryId: 0
+        garbageTypeInfo: {
+          name: '',
+          detail: '',
+          img: 0
         }
       }
     },
@@ -78,48 +80,63 @@
       getDataList () {
         this.loading = true
         axios.request({
-          url: 'societies/industries',
+          url: 'common/getGarbageType',
           method: 'get'
         }).then(res => {
           this.dataList = res.data.data
           this.loading = false
         })
       },
-      industryInfo (isUpdate) {
+      addGarbageType (isUpdate) {
         this.$Modal.confirm({
           render: (h) => {
             return h('div', [
               h('h2', {
                 props: {
                 }
-              },'学会行业分类信息'),
+              },'新增/修改垃圾类别'),
               h('p', {
                 props: {}
-              },'学会行业分类名称:'),
+              },'类别名称:'),
               h('Input', {
                 props: {
-                  value: this.industry.indusName,
+                  value: this.garbageTypeInfo.name,
                   autofocus: true,
-                  placeholder: '请输入学会行业分类名称'
+                  placeholder: '请输入类别名称'
                 },
                 on: {
                   input: (val) => {
-                    this.industry.indusName = val
+                    this.garbageTypeInfo.name = val
                   }
                 }
               }),
               h('p', {
                 props: {}
-              },'学会行业分类简称:'),
+              },'类别详情:'),
               h('Input', {
                 props: {
-                  value: this.industry.indusShort,
+                  value: this.garbageTypeInfo.detail,
                   autofocus: true,
-                  placeholder: '请输入学会行业分类简称'
+                  placeholder: '请输入类别详情'
                 },
                 on: {
                   input: (val) => {
-                    this.industry.indusShort = val
+                    this.garbageTypeInfo.detail = val
+                  }
+                }
+              }),
+              h('p', {
+                props: {}
+              },'icon:'),
+              h('Input', {
+                props: {
+                  value: this.garbageTypeInfo.img,
+                  autofocus: true,
+                  placeholder: '请输入icon地址'
+                },
+                on: {
+                  input: (val) => {
+                    this.garbageTypeInfo.img = val
                   }
                 }
               })
@@ -128,9 +145,9 @@
           },
           onOk: () => {
             axios.request({
-              url: 'societies/industries',
+              url: 'garbage/garbageType',
               method: `${isUpdate ? 'put' : 'post'}`,
-              data: this.industry
+              data: this.garbageTypeInfo
             }).then(res => {
               if (res.data.code === 200) {
                 this.$Message.success({
@@ -143,9 +160,9 @@
                   content: res.data.errMsg
                 })
               }
-              this.industry.indusName = ''
-              this.industry.indusShort = ''
-              this.industry.industryId = 0
+              this.garbageTypeInfo.name = ''
+              this.garbageTypeInfo.detail = ''
+              this.garbageTypeInfo.img = ''
               this.getDataList()
             }).catch(function (error) {
               this.$Message.error({
@@ -155,33 +172,33 @@
             })
           },
           onCancel: () => {
-            this.industry.indusName = ''
-            this.industry.indusShort = ''
-            this.industry.industryId = 0
+            this.garbageTypeInfo.name = ''
+            this.garbageTypeInfo.detail = ''
+            this.garbageTypeInfo.img = ''
           }
         })
       },
-      updateIndustry (index) {
-        this.industry.indusName = this.dataList[index].indusName
-        this.industry.indusShort = this.dataList[index].indusShort
-        this.industry.industryId = this.dataList[index].industryId
-        this.industryInfo(true)
+      updateGarbageType (index) {
+        this.garbageTypeInfo.name= this.dataList[index].garbageName
+        this.garbageTypeInfo.id= this.dataList[index].id
+        this.garbageTypeInfo.detail = this.dataList[index].garbageDetail
+        this.garbageTypeInfo.img = this.dataList[index].img
+        this.addGarbageType(true)
       },
-      removeIndustry (index) {
+      removeGarbageType (index) {
         this.$Modal.confirm({
           title: '警告',
           content: '你确定要删除吗？',
           onOk: () => {
             this.loading = true
             axios.request({
-              url: `societies/industries/${this.dataList[index].industryId}`,
+              url: `garbage/delete/${this.dataList[index].id}`,
               method: 'delete'
             }).then(
-              this.getDataList
-            )
+              this.getDataList()
+            );
           }
         })
-
       }
     }
   }
