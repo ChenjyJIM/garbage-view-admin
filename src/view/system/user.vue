@@ -6,7 +6,7 @@
         </FormItem>
         <FormItem>
           <Button @click="getDataList()">查询</Button>
-          <Button type="primary" @click="addOrUpdateHandle()">新增</Button>
+          <!--<Button type="primary" @click="addOrUpdateHandle()">新增</Button>-->
           <Button type="error" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量停用</Button>
         </FormItem>
       </Form>
@@ -280,9 +280,6 @@
               message: '密码长度不能小于6位',
               trigger: 'blur'
             }
-          ],
-          passwdCheck: [
-            { validator: validatePassCheck, trigger: 'blur' }
           ]
         },
         pStyle: {
