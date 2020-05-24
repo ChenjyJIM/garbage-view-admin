@@ -340,57 +340,49 @@
       // 新增 / 修改
       addOrUpdateHandle (id) {
         this.formData.id = id || 0
-        //获取学会列表
+        //获取学历列表
         axios.request({
-          url: 'common/institutes',
+          url: 'common/getAllEducation',
           method: 'get'
         }).then(res => {
-          this.instList = res.data.data
+          this.educationList = res.data.data
         }).then(() => {
-          //获取学历列表
+          //获取角色列表
           axios.request({
-            url: 'common/getAllEducation',
+            url: 'common/getAllRole',
             method: 'get'
           }).then(res => {
-            this.educationList = res.data.data
+            this.roleList = res.data.data
           }).then(() => {
-            //获取角色列表
-            axios.request({
-              url: 'common/getAllRole',
-              method: 'get'
-            }).then(res => {
-              this.roleList = res.data.data
-            }).then(() => {
-              //如果是更新，获取用户的信息
-              if (this.formData.id) {
-                axios.request({
-                  url: `authentication/user/${this.formData.id}`,
-                  method: 'get'
-                }).then(res => {
-                  this.formData.id = res.data.data.id
-                  this.formData.roleId = res.data.data.roleId
-                  this.formData.loginName = res.data.data.loginName
-                  this.formData.instId = res.data.data.instId
-                  this.formData.name = res.data.data.name
-                  this.formData.sex = res.data.data.sex
-                  this.formData.formatBirthday = res.data.data.formatBirthday
-                  this.formData.ethnic = res.data.data.ethnic
-                  this.formData.partisan = res.data.data.partisan
-                  this.formData.mail = res.data.data.mail
-                  this.formData.phone1 = res.data.data.phone1
-                  this.formData.phone2 = res.data.data.phone2
-                  this.formData.qq = res.data.data.qq
-                  this.formData.wechat = res.data.data.wechat
-                  this.formData.others = res.data.data.others
-                  this.formData.personPublicDuty = res.data.data.personPublicDuty
-                  this.formData.personAwards = res.data.data.personAwards
-                  this.formData.educationId = res.data.data.educationId
-                  this.formData.memo = res.data.data.memo
-                  this.addOrUpdateVisible = true
-                })
-              }
-              this.addOrUpdateVisible = true
-            })
+            //如果是更新，获取用户的信息
+            if (this.formData.id) {
+              axios.request({
+                url: `authentication/user/${this.formData.id}`,
+                method: 'get'
+              }).then(res => {
+                this.formData.id = res.data.data.id
+                this.formData.roleId = res.data.data.roleId
+                this.formData.loginName = res.data.data.loginName
+                this.formData.instId = res.data.data.instId
+                this.formData.name = res.data.data.name
+                this.formData.sex = res.data.data.sex
+                this.formData.formatBirthday = res.data.data.formatBirthday
+                this.formData.ethnic = res.data.data.ethnic
+                this.formData.partisan = res.data.data.partisan
+                this.formData.mail = res.data.data.mail
+                this.formData.phone1 = res.data.data.phone1
+                this.formData.phone2 = res.data.data.phone2
+                this.formData.qq = res.data.data.qq
+                this.formData.wechat = res.data.data.wechat
+                this.formData.others = res.data.data.others
+                this.formData.personPublicDuty = res.data.data.personPublicDuty
+                this.formData.personAwards = res.data.data.personAwards
+                this.formData.educationId = res.data.data.educationId
+                this.formData.memo = res.data.data.memo
+                this.addOrUpdateVisible = true
+              })
+            }
+            this.addOrUpdateVisible = true
           })
         })
       },
