@@ -13,8 +13,8 @@ export default {
    * @description api请求基础路径
    */
   baseUrl: {
-    dev: 'http://localhost:8081/',
-    pro: 'http://localhost:8081/'
+    dev: 'http://139.224.135.139:8081/',
+    pro: 'http://139.224.135.139:8081/'
   },
   /**
    * @description 默认打开的首页的路由name值，默认为home
