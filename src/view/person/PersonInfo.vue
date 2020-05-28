@@ -5,22 +5,16 @@
         <h1>个人信息</h1>
 
       </FormItem>
-      <FormItem>
-
-        <Button type="info" @click="enableEdit()">编辑</Button>
-      </FormItem>
     </Form>
     <Form ref="formdata" :model="formdata" :rules="ruleValidate" :label-width="80" :label-height="100">
       <FormItem label="您的姓名：" prop="name">
-        <Input v-model="formdata.name" value="formdata.name" v-if="show === false" disabled=""></Input>
-        <Input v-model="formdata.name" value="formdata.name" v-if="show === true"></Input>
+        <Input v-model="formdata.name" value="formdata.name"></Input>
       </FormItem>
-      <FormItem label="您的账号：" prop="loginName" >
-        <Input v-model="formdata.loginName" disabled=""></Input>
-      </FormItem>
+      <!--<FormItem label="您的账号：" prop="loginName" >-->
+        <!--<Input v-model="formdata.loginName" disabled=""></Input>-->
+      <!--</FormItem>-->
       <FormItem label="您的邮箱：" prop="mail">
-        <Input v-model="formdata.mail" v-if="show === false" disabled=""></Input>
-        <Input v-model="formdata.mail" v-if="show === true"></Input>
+        <Input v-model="formdata.mail"></Input>
 
       </FormItem>
       <!--<FormItem label="您加入的学会：" prop="instId">-->
@@ -28,8 +22,7 @@
 
       <!--</FormItem>-->
       <FormItem label="您的电话：" prop="phone">
-        <Input v-model="formdata.phone" v-if="show === false" disabled=""></Input>
-        <Input v-model="formdata.phone" v-if="show === true"></Input>
+        <Input v-model="formdata.phone"></Input>
 
       </FormItem>
       <FormItem label="您的性别：" prop="sex">
@@ -38,52 +31,49 @@
             <RadioGroup v-model="formdata.sex" value="formdata.sex">
               <!--<Radio label="男" v-if="formdata.sex == '女'" disabled="">男</Radio>-->
 
-              <Radio label="女" v-if="show === false" disabled="">女</Radio>
-              <Radio label="女" v-if="show === true">女</Radio>
+              <Radio label="女">女</Radio>
 
-              <Radio label="男" v-if="show === false" disabled="">男</Radio>
-              <Radio label="男" v-if="show === true">男</Radio>
+              <Radio label="男">男</Radio>
             </RadioGroup>
           </Col>
         </Row>
       </FormItem>
-      <FormItem label="生日：">
-        <Row>
-          <Col span="3">
-            <FormItem prop="birthday">
-              <DatePicker type="date" confirm format="yyyy年M月d日" :value="formdata.birthday"  v-model="formdata.birthday" v-if="show === false" disabled=""></DatePicker>
-              <DatePicker type="date" confirm format="yyyy年M月d日" :value="formdata.birthday"  v-model="formdata.birthday" v-if="show === true"></DatePicker>
-            </FormItem>
-          </Col>
-        </Row>
-      </FormItem>
-      <FormItem label="您的名族：" prop="ethnic">
-        <Input v-model="formdata.ethnic" v-if="show === false" disabled=""></Input>
-        <Input v-model="formdata.ethnic" v-if="show === true"></Input>
+      <!--<FormItem label="生日：">-->
+        <!--<Row>-->
+          <!--<Col span="3">-->
+            <!--<FormItem prop="birthday">-->
+              <!--<DatePicker type="date" confirm format="yyyy年M月d日" :value="formdata.birthday"  v-model="formdata.birthday" v-if="show === false" disabled=""></DatePicker>-->
+              <!--<DatePicker type="date" confirm format="yyyy年M月d日" :value="formdata.birthday"  v-model="formdata.birthday" v-if="show === true"></DatePicker>-->
+            <!--</FormItem>-->
+          <!--</Col>-->
+        <!--</Row>-->
+      <!--</FormItem>-->
+      <!--<FormItem label="您的名族：" prop="ethnic">-->
+        <!--<Input v-model="formdata.ethnic" v-if="show === false" disabled=""></Input>-->
+        <!--<Input v-model="formdata.ethnic" v-if="show === true"></Input>-->
 
-      </FormItem>
+      <!--</FormItem>-->
       <!--<FormItem label="您的党派：" prop="partisan">-->
         <!--<Input v-model="formdata.partisan" v-if="show === false" disabled=""></Input>-->
         <!--<Input v-model="formdata.partisan" v-if="show === true"></Input>-->
 
       <!--</FormItem>-->
-      <FormItem label="您的qq：" prop="qq">
-        <Input v-model="formdata.qq" v-if="show === false" disabled=""></Input>
-        <Input v-model="formdata.qq" v-if="show === true"></Input>
+      <!--<FormItem label="您的qq：" prop="qq">-->
+        <!--<Input v-model="formdata.qq" v-if="show === false" disabled=""></Input>-->
+        <!--<Input v-model="formdata.qq" v-if="show === true"></Input>-->
 
-      </FormItem>
-      <FormItem label="您的微信：" prop="wechat">
-        <Input v-model="formdata.wechat" v-if="show === false" disabled=""></Input>
-        <Input v-model="formdata.wechat" v-if="show === true"></Input>
+      <!--</FormItem>-->
+      <!--<FormItem label="您的微信：" prop="wechat">-->
+        <!--<Input v-model="formdata.wechat" v-if="show === false" disabled=""></Input>-->
+        <!--<Input v-model="formdata.wechat" v-if="show === true"></Input>-->
 
-      </FormItem>
+      <!--</FormItem>-->
       <FormItem label="您的备注" prop="memo">
-        <Input v-model="formdata.memo" type="textarea" :autosize="{minRows: 2,maxRows: 5}" v-if="show === false" disabled=""></Input>
-        <Input v-model="formdata.memo" type="textarea" :autosize="{minRows: 2,maxRows: 5}" v-if="show === true"></Input>
+        <Input v-model="formdata.memo" type="textarea" :autosize="{minRows: 2,maxRows: 5}"></Input>
       </FormItem>
       <FormItem>
-        <Button type="primary" @click="infoModified('formdata')">确定</Button>
-        <Button @click="handleReset('formdata')" style="margin-left: 8px">取消编辑</Button>
+        <Button type="primary" @click="infoModified('formdata')">修改</Button>
+        <!--<Button @click="handleReset('formdata')" style="margin-left: 8px">取消</Button>-->
       </FormItem>
     </Form>
   </div>
@@ -173,12 +163,11 @@ export default {
       instance.get(that.GLOBAL.serverPath + '/member/getCurrentUser', {})
         .then(function (response) {
           if (response.data.success) {
-            that.formdata.loginName = window.localStorage.getItem('username')
-            that.formdata.name = response.data.data.name
-            that.formdata.instId = response.data.data.instId
-            that.formdata.mail = response.data.data.mail
-            that.formdata.sex = response.data.data.sex
-            that.formdata.phone = response.data.data.phone1
+            that.formdata.loginName = window.localStorage.getItem('personId')
+            that.formdata.name = response.data.data.name == null?response.data.data.guestName : response.data.data.name
+            that.formdata.mail = response.data.data.mail == null?response.data.data.guestEmail: response.data.data.mail
+            that.formdata.sex = response.data.data.sex == null?response.data.data.guestSex:response.data.data.sex
+            that.formdata.phone = response.data.data.phone1 == null?response.data.data.guestPhone:response.data.data.phone1
             that.formdata.memo = response.data.data.memo
             that.formdata.ethnic = response.data.data.ethnic
             that.formdata.partisan = response.data.data.partisan
